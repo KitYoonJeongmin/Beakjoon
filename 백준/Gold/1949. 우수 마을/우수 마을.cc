@@ -7,7 +7,7 @@ int N;
 int citizens[MAX];
 vector<int> links[MAX];
 bool visited[MAX];
-int dp[MAX][2];
+int dp[MAX][2]; // c번 노드를 루트로 하는 서브트리의 인구수 최대값 0:c가 일반도시, 1:c가 우수도시
 
 void dfs(int c)
 {
@@ -22,7 +22,7 @@ void dfs(int c)
 		dfs(next);
 
 		dp[c][0] += max(dp[next][0], dp[next][1]);
-		dp[c][1] += dp[next][0];
+		dp[c][1] += dp[next][0]; // 현재 도시가 우수도시라면 인접한 도시는 일반도시
 	}
 }
 
